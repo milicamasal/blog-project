@@ -5,6 +5,10 @@ pipeline {
             steps {
                 sh 'python --version'
             }
+         stage('run') {
+            steps {
+                sh 'python manage.py runserver'
+            }
         }
      
         }
