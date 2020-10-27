@@ -1,0 +1,58 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+
+        <ul class="nav navbar-nav">
+        <li><a class="navbar-brand" href="{% url 'post_list' %}">My blog</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+</ul>
+<!--    </div>-->
+<!--<ul class="nav navbar-nav navbar-right">-->
+    {% if user.is_authenticated %}
+<li>
+    <a href="{% url 'post_new' %}"> New post</a>
+
+</li><li>
+    <a href="{% url 'post_draft_list' %}"> Drafts</a>
+
+</li><li>
+    <a href="{% url 'logout' %}"> Log Out</a>
+
+</li>
+    <li>
+    <a> Welcome: {{user.username}}</a>
+    {% else %}
+
+        <li><a href="{% url 'login' %}">Login</a> </li>
+    {% endif %}
+
+</ul>
+    </div>
+</nav>
+<div clas="content container">
+
+{% block content %}
+
+    {% endblock %}
+
+</div>
+</body>
+</html>
